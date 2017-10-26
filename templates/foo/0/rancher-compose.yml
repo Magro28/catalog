@@ -1,3 +1,17 @@
+.catalog:
+    name: "Concrete5"
+    version: "v0.2"
+    description: "Concrete5 CMS"
+    uuid: Concrete5-1
+    minimum_rancher_version: v0.51.0
+    questions:
+      - variable: scale
+        description: "How many frontend containers?"
+        label: "Number of containers"
+        required: true
+        default: 1
+        type: "int"
+
 version: '2'
 services:
   loadbalancer:
@@ -15,6 +29,6 @@ services:
       healthy_threshold: 2
       response_timeout: 2000
   web:
-    scale: 1
+    scale: ${scale}
   redis:
     scale: 1
